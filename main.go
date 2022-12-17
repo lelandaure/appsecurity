@@ -2,28 +2,28 @@ package main
 
 import (
 	"bytes"
-	kms "cloud.google.com/go/kms/apiv1"
-	"cloud.google.com/go/kms/apiv1/kmspb"
-	"cloud.google.com/go/storage"
 	"context"
 	"database/sql"
 	"encoding/json"
 	"fmt"
-	"github.com/lelandaure/appsecurity/api"
-	"google.golang.org/protobuf/types/known/wrapperspb"
 	"hash/crc32"
 	"io"
 	"log"
 	"time"
 
+	kms "cloud.google.com/go/kms/apiv1"
+	"cloud.google.com/go/kms/apiv1/kmspb"
+	"cloud.google.com/go/storage"
+	"github.com/lelandaure/appsecurity/api"
 	"github.com/lelandaure/appsecurity/db"
 	"github.com/lelandaure/appsecurity/util"
+	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 type KeyManagement struct {
 	Cnsecurity     string `json:"cn-security"`
 	Cnaccount      string `json:"cn-account"`
-	Cntransacction string `json:"cn-transacction"`
+	Cntransacction string `json:"cn-transaction"`
 	Cnmovement     string `json:"cn-movement"`
 }
 
@@ -31,12 +31,8 @@ func main() {
 
 	config, err := util.LoadConfig(".")
 	if err != nil {
-
 		log.Fatal("cannot load config", err)
 	}
-
-	//dataSourceName := fmt.Sprintf("server=%s;user id=%s;password=%s;port=%d;database=%s",
-	//	"localhost", "sa", "Aforo2552019", 1434, "db_account")
 
 	// get storage bucket
 	buf := new(bytes.Buffer)
@@ -44,7 +40,7 @@ func main() {
 	object := "config-secret.txt.encrypted"
 	Key, err := getKeyManagementServiceValue(buf, bucket, object)
 
-	fmt.Println(Key.Cnsecurity)
+	fmt.Println("cn security", Key.Cnsecurity)
 
 	conn, err := sql.Open(config.DBDriver, Key.Cnsecurity)
 	//log.Println(dataSourceName)

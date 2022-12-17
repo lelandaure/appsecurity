@@ -15,4 +15,4 @@ RUN go build -o /appsecurity
 
 EXPOSE 8080
 
-CMD [ "/appsecurity" ]
+#CMD [ "/appsecurity" ]
