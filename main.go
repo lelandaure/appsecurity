@@ -46,7 +46,7 @@ func main() {
 
 	fmt.Println(Key.Cnsecurity)
 
-	conn, err := sql.Open(config.DBDriver, config.DBSource)
+	conn, err := sql.Open(config.DBDriver, Key.Cnsecurity)
 	//log.Println(dataSourceName)
 	if err != nil {
 		log.Fatal("cannot connect to db", err)
