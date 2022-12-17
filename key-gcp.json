@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "my-golang-aforo255-project",
+  "private_key_id": "4ae4988841c6779df9718cdb83a07bac420beb29",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC1P2BY05fP6T8J\nx0afztcoBzD/u0748VXYvWOUTpdVAko1ghg5yaEqr+oQDz88Q+ppX4YB680BlN6T\nZuzA3Ib+Rci0m62AjM8FA1Dxm92A4x6ySoNa3kx5ePOBOdG0GjZkC497zVO/vQPH\nAJjQdUko7PXgA6v4tUQlFUgSRIW85lCOTMvMhXSANjrvE653GEi7DnzbbGKjMAIU\nbNPDhX5zmZ37DgHE+xBfTK61+P3oe6p1DL4u3+Wgcxr29ILNMhcNnC+i+Zlc/jXy\n+SNNfBL9Di6k5u7BMKCzEiCl5FWNWNLc5mNh+5ETT9PrqzwPw+tgDeVbrGSBfccf\nvToyTS+1AgMBAAECggEAHKcau6AjsU4d1ZVnwE7KK71LTTpWxzsbx6pVCjaMbPdy\nNNhOrSAHdwCdX5GRfRz9e1ALFtWosJXQw/uy9OBIBP2SN58exCI+ffviuXdbAoul\nKClob56R92gcErNJyA+WxqUfN0Kj+T1P0g9xmQ7ZlHs1eYcLEkPRtI0TOjQT8mMw\nfdJjSqAAzW9r9Zx70aQiTH33C4BYujotSG3iYntiraQal44BPjEQggGjCySkXk9b\nWQU9xSUrTB6u7GEAOnaWTMoFIGCpSZTu6IrRJ35UkYIDegeH0R0ne7mhNPkvm4mO\nEIyyw+gaoS0is9gXBcXsmfo9MJk09GE1AJn5mxmdIQKBgQDbZrwXueKhFZ42W01z\nDPPuzNei0ewgSEMXZ1daPOk3Gc+blRsl/I0Za7NfySCmDXvhmh/k8HQHSFGP6Lbj\nqY/2A+a52n6dj8Fe2up/w6ZP2JjW+gryJf5xloY4TXXGLeY23uGIBrZjtvb+GjWg\nIkFk/e0IZzpM+rIRmg9jDkYqEQKBgQDTe1UgbCZ6eh43YOyVIXkqzpFMhzY/2Gnl\nT8PtLkGEiuEefRx2JiTh1fThJcIaxoJ3wzO+nC6aeSSeUJ+6HDZ25Klqms+FrFge\nlBE3URDgqV4HmJlZiLoCHnVsgzfzXZcqBLJCK0aY2e//OBHS+7s5LobuzIfMMsSb\nqzAwVtYnZQKBgFhcRcBgcq9hX3iQyN5fBxbTlLzUQn61259fVUTYZyxzzrLgGDDy\nR3lHcNRQ0j9OCuhPBC1V0cTlEUQd+xoxPfNcmt2a64dVUBF9pReTmjVqDBP4W9Qu\nDQ1+C8w9FgOclKzgkoAQBACgvVSVBafaY+/ifEX4HPjHtlN0cmH4a7WhAoGAb88f\n9ZFYUp6nxQ2YZ0wYPJqT1UsTUnP/oL4oTwiKmSG33Z+14X1POJse6b5FvlQ/fEQW\n4mq+dOshghYMLKBn5zoDnBoXJ4wz1o7f/0f7zVueHBQA14ZjGWWzHVjOxvsvRYbQ\nHA23OG7Y5S1mtw5iMNw5eJ1oGnyo18iNJLF0bcUCgYAaueY65ywXVqE/y+1OpcVw\nCMlcLoqfY8jXZ2oL3XyjdTYXmIixK1SApWmt1QFzy7qA9BzoHAG1B5l25gaCrQan\nYVoCNa2GLgDH7bjejsac5TT5hJw/GbqexzHiUdJZPonUvGnpC3V9jTbJ3kJatpTd\nEhKJr5Ct42HvseDuOfLSIA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "my-golang-aforo255-project@appspot.gserviceaccount.com",
+  "client_id": "117447491782038576889",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/my-golang-aforo255-project%40appspot.gserviceaccount.com"
+}

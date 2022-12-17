@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  appsecurity-go:
+    build:
+      dockerfile: ./Dockerfile
+    ports:
+      - "5001:5001"
