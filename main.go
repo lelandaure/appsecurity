@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"hash/crc32"
 	"io"
+	"io/ioutil"
 	"log"
 	"time"
 
@@ -39,6 +40,9 @@ func main() {
 	bucket := "lel-aforo255-bucket"
 	object := "config-secret.txt.encrypted"
 	Key, err := getKeyManagementServiceValue(buf, bucket, object)
+	if err != nil {
+		log.Fatal("cannot kms service: ", err.Error())
+	}
 
 	fmt.Println("cn security", Key.Cnsecurity)
 
@@ -69,41 +73,52 @@ func getKeyManagementServiceValue(w io.Writer, bucket, object string) (KeyManage
 	// bucket := "bucket-name"
 	// object := "object-name"
 	ctx := context.Background()
-	client, err := storage.NewClient(ctx)
+	storageClient, err := storage.NewClient(ctx)
 	if err != nil {
 		return Key, fmt.Errorf("storage.NewClient: %v", err)
 	}
-	defer client.Close()
+	defer storageClient.Close()
 
 	ctx, cancel := context.WithTimeout(ctx, time.Second*50)
 	defer cancel()
 
-	rc, err := client.Bucket(bucket).Object(object).NewReader(ctx)
+	storageReader, err := storageClient.Bucket(bucket).Object(object).NewReader(ctx)
 
-	fmt.Println(rc.Attrs)
+	fmt.Println(storageReader.Attrs)
 	if err != nil {
 		return Key, fmt.Errorf("Object(%q).NewReader: %v", object, err)
 	}
 
-	defer rc.Close()
+	defer storageReader.Close()
 
-	ciphertext, err := io.ReadAll(rc)
+	ciphertext, err := ioutil.ReadAll(storageReader)
 	if err != nil {
 		return Key, fmt.Errorf("ioutil.ReadAll: %v", err)
 	}
 
 	// Decryp Values
-
 	nameKey := "projects/my-golang-aforo255-project/locations/global/keyRings/aforo255-kringslel/cryptoKeys/config-keylel"
-	// ciphertext := []byte("...")  // result of a symmetric encryption call
 
-	// Create the client.
-
-	client2, err := kms.NewKeyManagementClient(ctx)
+	// Create the kmsClient.
+	client, err := kms.NewKeyManagementClient(ctx)
 	if err != nil {
-		return Key, fmt.Errorf("failed to create kms client: %v", err)
+		return Key, fmt.Errorf("failed to create kms storageClient: %v", err)
 	}
 	defer client.Close()
+
+	// Get the current IAM policy.
+	handle := client.ResourceIAM(nameKey)
+	policy, err := handle.Policy(ctx)
+	if err != nil {
+		return Key, fmt.Errorf("failed to get IAM policy: %v", err)
+	}
+
+	// Grant the member permissions. This example grants permission to use the key
+	// to encrypt data.
+	policy.Add("user:lelandaure@gmail.com", "roles/cloudkms.cryptoKeyEncrypterDecrypter")
+	if err := handle.SetPolicy(ctx, policy); err != nil {
+		return Key, fmt.Errorf("failed to save policy: %v", err)
+	}
 
 	// Optional, but recommended: Compute ciphertext's CRC32C.
 	crc32c := func(data []byte) uint32 {
@@ -120,9 +135,10 @@ func getKeyManagementServiceValue(w io.Writer, bucket, object string) (KeyManage
 	}
 
 	// Call the API.
-	result, err := client2.Decrypt(ctx, req)
+	result, err := client.Decrypt(ctx, req)
 	if err != nil {
 		//reporting(err)
+		fmt.Println("the err is: ", err.Error())
 		return Key, fmt.Errorf("failed to decrypt ciphertext: %v", err)
 	}
 
