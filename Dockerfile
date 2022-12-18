@@ -13,6 +13,6 @@ RUN ls
 
 RUN go build -o /appsecurity
 
-EXPOSE 8080
+EXPOSE 5001
 
-#CMD [ "/appsecurity" ]
+CMD [ "/appsecurity" ]
